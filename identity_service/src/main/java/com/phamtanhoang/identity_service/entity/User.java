@@ -1,12 +1,12 @@
 package com.phamtanhoang.identity_service.entity;
 
-import java.time.LocalDate;
-import java.util.Set;
-
 import jakarta.persistence.*;
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,6 +25,11 @@ public class User {
     String firstName;
     LocalDate dob;
     String lastName;
+    String phone;
+    String address;
+    String status;
+    Instant createdAt;
+    Instant updatedAt;
 
     @ManyToMany
     Set<Role> roles;

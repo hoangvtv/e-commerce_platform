@@ -19,4 +19,6 @@ public class UserResponse {
     LocalDate dob;
     Set<RoleResponse> roles;
     Boolean noPassword;
+    String phone;
+    String address;
 }

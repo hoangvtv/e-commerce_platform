@@ -1,5 +1,6 @@
 package com.phamtanhoang.identity_service.service;
 
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class UserService {
         if (userRepository.existsByUsername(request.getUsername())) throw new AppException(ErrorCode.USER_EXISTED);
 
         User user = userMapper.toUser(request);
+        user.setCreatedAt(Instant.now());
+        user.setUpdatedAt(Instant.now());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         HashSet<Role> roles = new HashSet<>();
@@ -89,6 +92,7 @@ public class UserService {
 
         userMapper.updateUser(user, request);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setUpdatedAt(Instant.now());
 
         var roles = roleRepository.findAllById(request.getRoles());
         user.setRoles(new HashSet<>(roles));
