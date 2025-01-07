@@ -21,5 +21,8 @@ public class UserUpdateRequest {
     @DobConstraint(min = 18, message = "INVALID_DOB")
     LocalDate dob;
 
+    String phone;
+    String address;
+
     List<String> roles;
 }
